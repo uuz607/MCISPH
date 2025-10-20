@@ -1,0 +1,2 @@
+add_subdirectory(zlib EXCLUDE_FROM_ALL)
+add_subdirectory(partio EXCLUDE_FROM_ALL)
