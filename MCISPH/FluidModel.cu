@@ -900,13 +900,11 @@ namespace mcisph
         auto calc_density = [=] __device__(uint32_t idx) {
             Particle& pi = d_particles[idx];
             float density = 0.f;
-            float denom = 0.f;
             for (uint32_t i = 0; i < pi.num_neighbor; i++)
             {
                 const Particle& pj = d_particles[d_neighbors[idx * num_neighbor + i]];
                 float Wij = W(pi.pos - pj.pos, wcoeff);
                 density += mj * Wij;
-                denom += mj / pj.rho * Wij;
             }
             pi.rho = density < 1e-9f ? density0 : density;
         };
